@@ -61,6 +61,18 @@ passed to the :config key in the `settings` function.
 
 The `run` function starts the ssh server.
 
+## Example
+
+Create a server-spec that can be lifted in a group-spec:
+
+```clojure
+(def sshd-config
+  (pallet.crate.ssh/server-spec
+   {:sshd-config
+    {"AllowUsers" "pallet"
+     "PasswordAuthentication" "no"
+     "PermitRootLogin" "no"}}))
+```
 
 ## Live test on vmfest
 
