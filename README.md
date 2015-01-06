@@ -34,7 +34,7 @@ A [pallet](http://palletops.com/) crate to install and configure ssh.
 
 The ssh crate provides a `server-spec` function that returns a
 server-spec. This server spec will install and run the ssh server (not the
-dashboard).  You pass a map of options to configure ssh.  The `:config`
+dashboard).  You pass a map of options to configure ssh.  The `:sshd-config`
 value should be a form that will be output as the
 [ssh configuration](http://ssh.io/howto.html).
 
