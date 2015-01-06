@@ -63,7 +63,9 @@ The `run` function starts the ssh server.
 
 ## Example
 
-Create a server-spec that can be lifted in a group-spec:
+The following creates a server-spec that can be lifted in a group-spec. This
+will merge the default settings with your specified settings. If the setting is
+already set in defaults, your setting will replace it.
 
 ```clojure
 (def sshd-config
@@ -72,6 +74,48 @@ Create a server-spec that can be lifted in a group-spec:
     {"AllowUsers" "pallet"
      "PasswordAuthentication" "no"
      "PermitRootLogin" "no"}}))
+```
+
+## Defaults
+
+See Example above on how to override defaults.
+
+```clojure
+(defn defaults
+  []
+  {:sshd-config {"AcceptEnv" "LANG LC_*"
+                 "ChallengeResponseAuthentication" "no"
+                 "HostKey" ["/etc/ssh/ssh_host_dsa_key"
+                            "/etc/ssh/ssh_host_ecdsa_key"
+                            "/etc/ssh/ssh_host_rsa_key"]
+                 "HostbasedAuthentication" "no"
+                 "IgnoreRhosts" "yes"
+                 "KeyRegenerationInterval" 3600
+                 "LogLevel" "INFO"
+                 "LoginGraceTime" 120
+                 "PermitEmptyPasswords" "no"
+                 "PermitRootLogin" "yes"
+                 "Port" 22
+                 "PrintLastLog" "yes"
+                 "PrintMotd" "no"
+                 "Protocol" 2
+                 "PubkeyAuthentication" "yes"
+                 "RSAAuthentication" "yes"
+                 "RhostsRSAAuthentication" "no"
+                 "ServerKeyBits" 768
+                 "StrictModes" "yes"
+                 "Subsystem" "sftp /usr/lib/openssh/sftp-server"
+                 "SyslogFacility" "AUTH"
+                 "TCPKeepAlive" "yes"
+                 "UsePAM" "yes"
+                 "UsePrivilegeSeparation" "yes"
+                 "X11DisplayOffset" 10
+                 "X11Forwarding" "yes"}
+   :supervisor :initd
+   :run-command "/usr/sbin/sshd -D"
+   :service-name "sshd"
+   :service-log-dir (fragment (file (log-root) "ssh"))
+   :config-base (fragment (file (config-root) "ssh"))})
 ```
 
 ## Live test on vmfest
