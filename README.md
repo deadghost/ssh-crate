@@ -9,7 +9,7 @@ A [pallet](http://palletops.com/) crate to install and configure ssh.
 ### Dependency Information
 
 ```clj
-:dependencies [[com.palletops/ssh-crate "0.8.0-SNAPSHOT"]]
+:dependencies [[org.clojars.deadghost/ssh-crate "0.8.0-SNAPSHOT"]]
 ```
 
 ### Releases

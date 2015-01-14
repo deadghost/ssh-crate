@@ -1,4 +1,4 @@
-(defproject com.palletops/ssh-crate "0.8.0-SNAPSHOT"
+(defproject org.clojars.deadghost/ssh-crate "0.8.0-SNAPSHOT"
   :description "Crate for ssh installation"
   :url "http://github.com/pallet/ssh-crate"
   :license {:name "Eclipse Public License"
